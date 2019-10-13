@@ -18,15 +18,18 @@ public class FractionController {
 	String regex;
 	
 	public FractionNumber perfromOperation(String input) {
-		try{
+		
 		String[] ar = input.trim().split(" +");
 		
 		regex = "^\\d+(\\_\\d+\\/\\d+|/\\d+)?$";
 		System.out.println("Matches: " + ar[0].matches(regex));
-		
+		try{
 		if(ar.length != 3 || ar[0].matches(regex) == false || ar[2].matches(regex) == false)
 			throw new FractionException("Not a valid input");
-		
+		}catch(FractionException fe) {
+			System.err.println("Fraction Exception: " + fe.getMessage());
+			System.exit(1);
+		}
 		
 		operator = ar[1];
 		
@@ -53,11 +56,14 @@ public class FractionController {
 				result = fs.subtractFractions(new FractionNumber(ar[0]), new FractionNumber(ar[2]));
 				break;
 			default:
+				try{
 				throw new FractionException("Invalid Operation");
+				}catch(FractionException fe) {
+					System.err.println("Fraction Exception: " + fe.getMessage());
+					System.exit(1);
+				}
 		}
-		}catch(FractionException fe) {
-			System.err.println(fe);
-		}
+		
 		return result;
 		
 			

@@ -3,6 +3,8 @@ package demo.fraction.constants;
 import java.util.HashMap;
 import java.util.Map;
 
+import demo.fraction.exception.FractionException;
+
 public enum Operation {
 
 	MULTIPLY("*"),
@@ -29,8 +31,14 @@ public enum Operation {
 	}
 	
 	public static Operation getOperationName(String operator) {
-		if(operations.get(operator) == null)
-			throw new IllegalArgumentException("Not a valid Operator");
+		try{
+			if(operations.get(operator) == null)
+				throw new FractionException("Not a valid Operator");
+		}catch(FractionException fe) {
+			System.err.println("Fraction Exception: " + fe.getMessage());;
+			System.exit(1);
+		}
+			
 		return operations.get(operator);
 	}
 	

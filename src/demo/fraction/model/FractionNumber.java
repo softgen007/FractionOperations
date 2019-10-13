@@ -1,15 +1,13 @@
 package demo.fraction.model;
 
+import demo.fraction.exception.FractionException;
+
 public class FractionNumber {
 	
 	private int numerator;
 	private int denominator;
 	private int wholePart;
 	
-	/*
-	 * public FractionNumber() { //numerator = 0; denominator = 1; //whole = 0;
-	 * fractionNumber = ""; }
-	 */
 	public FractionNumber(String number) {
 		denominator = 1;
 		
@@ -25,6 +23,14 @@ public class FractionNumber {
 			
 		System.out.println("Denominator: " + denominator);
 		
+		try{
+			if(denominator == 0)
+				throw new FractionException("Denominator can not be zero");
+		}catch(FractionException fe) {
+			System.err.println("Fraction Exception: " + fe.getMessage());
+			System.exit(1);
+		}
+			
 		if(number.contains("_") || (!number.contains("/") && !number.contains("_")))
 			wholePart = Integer.valueOf(number.split("_")[0]);
 		
