@@ -17,7 +17,7 @@ Enter Input: 2_3/8 + 9/8
 
 Result: 3_1/2
 
-## How to Run
+# How to Run
 - Download the zip or clone the Git repository.
 - Unzip the zip file (if you downloaded one)
 - Open Eclipse 
@@ -28,3 +28,6 @@ Result: 3_1/2
  - Goto "Run As" -> "Java Application"
  - Goto Console Window in Eclipse
  - Enter your input against "Enter Input: " prompt and press enter
+ 
+#### Note
+You can run this program from Java command line as well if you choose so or any other IDE or method you may prefer.
