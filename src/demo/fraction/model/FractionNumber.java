@@ -30,7 +30,7 @@ public class FractionNumber {
 		
 		System.out.println("Whole Part: " + wholePart);
 		
-		if(Math.abs(numerator) >= denominator && denominator != 0)
+		if(Math.abs(numerator) >= denominator && (denominator != 0 || denominator != 1))
 			normalizeFraction();
 		if(Math.abs(numerator) >= denominator && denominator > 1)
 			convertToProperFraction();
@@ -105,7 +105,7 @@ public class FractionNumber {
 		if(wholePart != 0)
 			fractionNumber = fractionNumber.append(wholePart + "_");
 		fractionNumber = fractionNumber.append(numerator);
-		if(denominator != 0 || denominator != 1)
+		if(denominator != 0 && denominator != 1)
 			fractionNumber = fractionNumber.append("/" + denominator);
 		//System.out.println("FractionNumber: " + fractionNumber);
 		return fractionNumber.toString();
