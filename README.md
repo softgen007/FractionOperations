@@ -1,6 +1,6 @@
 # Fraction Math Operations
 
-It is a command line program in Java that will take operations on fractions as an input and produce a fractional result.
+It program in Java language that will take operations on fractions as an input from command line and produce a fractional result.
 - Legal operators shall be *, /, +, - (multiply, divide, add, subtract)
 - Operands and operators shall be separated by one or more spaces
 - Mixed numbers will be represented by whole_numerator/denominator. e.g. "3_1/4"
@@ -21,5 +21,10 @@ Result: 3_1/2
 - Download the zip or clone the Git repository.
 - Unzip the zip file (if you downloaded one)
 - Open Eclipse 
-   - File -> Import -> Existing Maven Project -> Navigate to the folder where you unzipped the zip
-   - Select all projects
+   - File -> Import -> Existing Projects into Workspace -> Navigate to the folder where you unzipped the zip or cloned the git repo
+   - Select FractionOperations project
+   - Click Finish
+ - Right click on FractionOperations project
+ - Goto "Run As" -> "Java Application"
+ - Goto Console Window in Eclipse
+ - Enter your input against "Enter Input: " prompt and press enter
