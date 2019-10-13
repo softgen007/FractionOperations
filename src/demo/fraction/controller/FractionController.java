@@ -1,9 +1,65 @@
 package demo.fraction.controller;
 
+import demo.fraction.constants.Operation;
+import demo.fraction.exception.FractionException;
+import demo.fraction.model.FractionNumber;
+import demo.fraction.service.FractionService;
+
 public class FractionController {
 
-	public int perfromOperation(String input) {
+	String operator;
+	
+	FractionService fs;
+	
+	Operation operation;
+	
+	FractionNumber result;
+	
+	String regex;
+	
+	public FractionNumber perfromOperation(String input) {
+		try{
+		String[] ar = input.trim().split(" +");
 		
-		return 0;
+		regex = "^\\d+(\\_\\d+\\/\\d+|/\\d+)?$";
+		System.out.println("Matches: " + ar[0].matches(regex));
+		
+		if(ar.length != 3 || ar[0].matches(regex) == false || ar[2].matches(regex) == false)
+			throw new FractionException("Not a valid input");
+		
+		
+		operator = ar[1];
+		
+		operation = Operation.getOperationName(operator);
+		System.out.println("Operation: " + operation);
+		
+		fs = new FractionService();
+		
+		switch(operation.toString()) {
+			case "MULTIPLY":
+				System.out.println("Multiplication");
+				result = fs.multiplyFractions(new FractionNumber(ar[0]), new FractionNumber(ar[2]));
+				break;
+			case "DIVIDE":
+				System.out.println("Division");
+				result = fs.divideFractions(new FractionNumber(ar[0]), new FractionNumber(ar[2]));
+				break;
+			case "ADD":
+				System.out.println("Addition");
+				result = fs.addFractions(new FractionNumber(ar[0]), new FractionNumber(ar[2]));
+				break;
+			case "SUBTRACT":
+				System.out.println("Subtraction");
+				result = fs.subtractFractions(new FractionNumber(ar[0]), new FractionNumber(ar[2]));
+				break;
+			default:
+				throw new FractionException("Invalid Operation");
+		}
+		}catch(FractionException fe) {
+			System.err.println(fe);
+		}
+		return result;
+		
+			
 	}
 }
