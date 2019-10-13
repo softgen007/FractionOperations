@@ -19,7 +19,7 @@ public class FractionController {
 
 		String[] ar = input.trim().split(" +");
 
-		regex = "^\\d+(\\_\\d+\\/\\d+|/\\d+)?$";
+		regex = "^(\\-)?\\d+(\\_\\d+\\/\\d+|/\\d+)?$";
 
 		try {
 			if (ar.length != 3 || ar[0].matches(regex) == false || ar[2].matches(regex) == false)

@@ -23,6 +23,7 @@ public enum Operation {
 
 	static {
 		for (Operation op : Operation.values()) {
+			
 			operations.put(op.getOperation(), op);
 		}
 	}
@@ -33,7 +34,6 @@ public enum Operation {
 				throw new FractionException("Not a valid Operator");
 		} catch (FractionException fe) {
 			System.err.println("Fraction Exception: " + fe.getMessage());
-			;
 			System.exit(1);
 		}
 
